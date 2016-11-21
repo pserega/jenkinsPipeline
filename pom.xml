@@ -27,16 +27,22 @@
     <artifactId>maven-surefire-plugin</artifactId>
     <version>2.19.1</version>
 </dependency>
+
+<dependency>
+    <groupId>org.jfrog.buildinfo</groupId>
+    <artifactId>artifactory-maven-plugin</artifactId>
+    <version>2.4.1</version>
+</dependency>
   </dependencies>
 
 <build>
         <pluginManagement>
             <plugins>
-                <plugin>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>sonar-maven-plugin</artifactId>
-    <version>2.4</version>
-  </plugin>
+<plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.1.1</version>
+      </plugin>
   
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -77,7 +83,7 @@
                                 <propertiesFile>publish.properties</propertiesFile>
                             </artifactory>
                             <publisher>
-                                <contextUrl>http://srv-testapp-001t:8081/artifactory</contextUrl>
+                                <contextUrl>${url}</contextUrl>
                                 <username>${username}</username>
                                 <password>${password}</password>
                                 <excludePatterns>*-.jar</excludePatterns>
